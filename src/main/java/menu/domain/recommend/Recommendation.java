@@ -24,7 +24,7 @@ public class Recommendation {
         Map<Category, Integer> categoryCountRecorder = new LinkedHashMap<>();
         List<String> menus = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Category category = randomCategoryRecommender.chooseRandomCategory(5);
+            Category category = randomCategoryRecommender.chooseRandomCategory(4);
             String menu = randomMenuRecommender.chooseMenuByCategory(category);
             categoryCountRecorder.put(category, categoryCountRecorder.getOrDefault(category, 0) + 1);
             menus.add(menu);

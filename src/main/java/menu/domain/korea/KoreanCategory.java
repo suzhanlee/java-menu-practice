@@ -2,8 +2,9 @@ package menu.domain.korea;
 
 import java.util.ArrayList;
 import java.util.List;
+import menu.domain.Category;
 
-public class KoreanCategory {
+public class KoreanCategory implements Category {
 
     private final String name;
     private final List<String> menus = new ArrayList<>();
@@ -14,5 +15,10 @@ public class KoreanCategory {
 
     public KoreanCategory(String name) {
         this.name = name;
+    }
+
+    @Override
+    public List<String> getMenus() {
+        return this.menus;
     }
 }

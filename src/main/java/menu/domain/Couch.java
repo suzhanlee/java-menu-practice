@@ -8,13 +8,12 @@ public class Couch {
     private final List<String> dislikeMenus;
 
     public Couch(String name, List<String> dislikeMenus) {
-        validate(name);
-        validateDislikeMenus(dislikeMenus);
+        validate(name, dislikeMenus);
         this.name = name;
         this.dislikeMenus = dislikeMenus;
     }
 
-    private void validate(String name) {
+    private void validate(String name, List<String> dislikeMenus) {
         validateName(name);
         validateDislikeMenus(dislikeMenus);
     }
@@ -41,5 +40,9 @@ public class Couch {
 
     public boolean isDislike(List<String> menus) {
         return menus.stream().anyMatch(this.dislikeMenus::contains);
+    }
+
+    public String getName() {
+        return name;
     }
 }

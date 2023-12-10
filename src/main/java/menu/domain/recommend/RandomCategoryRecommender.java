@@ -14,6 +14,6 @@ public class RandomCategoryRecommender {
     }
 
     public Category chooseRandomCategory(int number) {
-        return categories.findCategory(randomService.pickNumberInRange(1, number));
+        return categories.findCategory(randomService.pickNumberInRange(0, number));
     }
 }
