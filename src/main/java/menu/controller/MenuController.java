@@ -3,6 +3,7 @@ package menu.controller;
 import java.util.ArrayList;
 import java.util.List;
 import menu.domain.Couch;
+import menu.domain.Player;
 import menu.domain.recommend.Recommendation;
 import menu.dto.IndividualRecommendMenu;
 import menu.view.InputView;
@@ -21,12 +22,12 @@ public class MenuController {
     }
 
     public void run() {
-        List<Couch> couches = getCouchesWithRetry();
-        List<IndividualRecommendMenu> individualRecommendMenus = getIndividualRecommendMenusWithRetry(couches);
+        Player player = getCouchesWithRetry();
+        List<IndividualRecommendMenu> individualRecommendMenus = getIndividualRecommendMenusWithRetry(player);
         outputView.printRecommendationResult(individualRecommendMenus);
     }
 
-    private List<Couch> getCouchesWithRetry() {
+    private Player getCouchesWithRetry() {
         try {
             return getCouches();
         } catch (IllegalStateException e) {
@@ -35,7 +36,7 @@ public class MenuController {
         }
     }
 
-    private List<Couch> getCouches() {
+    private Player getCouches() {
         List<String> couchNames = inputView.couchNames();
         List<Couch> couches = new ArrayList<>();
         for (String couchName : couchNames) {
@@ -43,24 +44,19 @@ public class MenuController {
             Couch couch = new Couch(couchName, dislikeMenus);
             couches.add(couch);
         }
-        return couches;
+        return new Player(couches, recommendation);
     }
 
-    private List<IndividualRecommendMenu> getIndividualRecommendMenusWithRetry(List<Couch> couches) {
+    private List<IndividualRecommendMenu> getIndividualRecommendMenusWithRetry(Player player) {
         try {
-            return getIndividualRecommendMenus(couches);
+            return getIndividualRecommendMenus(player);
         } catch (IllegalStateException e) {
             outputView.printErrorMessage(e.getMessage());
-            return getIndividualRecommendMenusWithRetry(couches);
+            return getIndividualRecommendMenusWithRetry(player);
         }
     }
 
-    private List<IndividualRecommendMenu> getIndividualRecommendMenus(List<Couch> couches) {
-        List<IndividualRecommendMenu> individualRecommendMenus = new ArrayList<>();
-        for (Couch couch : couches) {
-            List<String> recommendMenus = recommendation.recommend(couch);
-            individualRecommendMenus.add(new IndividualRecommendMenu(couch, recommendMenus));
-        }
-        return individualRecommendMenus;
+    private List<IndividualRecommendMenu> getIndividualRecommendMenus(Player player) {
+        return player.createIndividualRecommendMenus();
     }
 }
