@@ -1,4 +1,4 @@
-package menu.controller;
+package menu.dto;
 
 import java.util.List;
 import menu.domain.Couch;

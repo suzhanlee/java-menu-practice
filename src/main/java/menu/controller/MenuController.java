@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import menu.domain.Couch;
 import menu.domain.recommend.Recommendation;
+import menu.dto.IndividualRecommendMenu;
 import menu.view.InputView;
 import menu.view.OutputView;
 

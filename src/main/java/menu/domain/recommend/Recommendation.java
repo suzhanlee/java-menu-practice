@@ -1,6 +1,5 @@
 package menu.domain.recommend;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,8 @@ public class Recommendation {
                 .collect(Collectors.toList());
     }
 
-    private List<String> getRecommendationMenus(Couch couch, List<String> menus, Map<Category, Integer> categoryCountRecorder) {
+    private List<String> getRecommendationMenus(Couch couch, List<String> menus,
+                                                Map<Category, Integer> categoryCountRecorder) {
         boolean recommendable = createRecommendationMenus(couch, menus, categoryCountRecorder).recommendable();
         if (recommendable) {
             return menus;
@@ -51,7 +51,8 @@ public class Recommendation {
         return recommend(couch);
     }
 
-    private RecommendationMenusSupervisor createRecommendationMenus(Couch couch, List<String> menus, Map<Category, Integer> categoryCountRecorder) {
+    private RecommendationMenusSupervisor createRecommendationMenus(Couch couch, List<String> menus,
+                                                                    Map<Category, Integer> categoryCountRecorder) {
         return new RecommendationMenusSupervisor(
                 List.of(
                         new ExcessiveCategoryDuplicationChecker(categoryCountRecorder),

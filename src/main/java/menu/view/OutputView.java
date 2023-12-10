@@ -1,7 +1,7 @@
 package menu.view;
 
 import java.util.List;
-import menu.controller.IndividualRecommendMenu;
+import menu.dto.IndividualRecommendMenu;
 
 public class OutputView {
 

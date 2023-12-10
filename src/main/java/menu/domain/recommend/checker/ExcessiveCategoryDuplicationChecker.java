@@ -3,7 +3,7 @@ package menu.domain.recommend.checker;
 import java.util.Map;
 import menu.domain.Category;
 
-public class ExcessiveCategoryDuplicationChecker implements RecommendChecker{
+public class ExcessiveCategoryDuplicationChecker implements RecommendChecker {
 
     private final Map<Category, Integer> categoryCountRecorder;
 
