@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import menu.domain.Category;
 import menu.domain.Couch;
 import menu.domain.recommend.checker.DislikedMenuChecker;
@@ -37,16 +38,14 @@ public class Recommendation {
     }
 
     private List<String> getMenus(Map<Category, Integer> categoryCountRecorder) {
-        List<String> menus = new ArrayList<>();
-        for (Category category : categoryCountRecorder.keySet()) {
-            menus.add(randomMenuRecommender.chooseMenuByCategory(category));
-        }
-        return menus;
+        return categoryCountRecorder.keySet().stream()
+                .map(randomMenuRecommender::chooseMenuByCategory)
+                .collect(Collectors.toList());
     }
 
     private List<String> getRecommendationMenus(Couch couch, List<String> menus, Map<Category, Integer> categoryCountRecorder) {
-        if (createRecommendationMenus(couch, menus,
-                categoryCountRecorder).recommendable()) {
+        boolean recommendable = createRecommendationMenus(couch, menus, categoryCountRecorder).recommendable();
+        if (recommendable) {
             return menus;
         }
         return recommend(couch);
