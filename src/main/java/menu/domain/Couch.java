@@ -38,4 +38,8 @@ public class Couch {
     private boolean outOfMenusSizeRange(List<String> dislikeMenus) {
         return dislikeMenus.size() > 2;
     }
+
+    public boolean isDislike(List<String> menus) {
+        return menus.stream().anyMatch(this.dislikeMenus::contains);
+    }
 }

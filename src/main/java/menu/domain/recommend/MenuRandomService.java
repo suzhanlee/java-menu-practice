@@ -1,4 +1,4 @@
-package menu.domain;
+package menu.domain.recommend;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
