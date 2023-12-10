@@ -20,7 +20,7 @@ public class Couch {
 
     private void validateName(String name) {
         if (outOfNameSizeRange(name)) {
-            throw new IllegalStateException("코치의 이름은 2 ~ 4자리까지 가능합니다.");
+            throw new IllegalStateException("[ERROR]코치의 이름은 2 ~ 4자리까지 가능합니다.");
         }
     }
 
@@ -30,7 +30,7 @@ public class Couch {
 
     private void validateDislikeMenus(List<String> dislikeMenus) {
         if (outOfMenusSizeRange(dislikeMenus)) {
-            throw new IllegalStateException("기피 음식은 2개 까지만 지정할 수 있습니다.");
+            throw new IllegalStateException("[ERROR]기피 음식은 2개 까지만 지정할 수 있습니다.");
         }
     }
 

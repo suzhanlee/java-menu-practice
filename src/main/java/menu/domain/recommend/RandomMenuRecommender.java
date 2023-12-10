@@ -15,6 +15,6 @@ public class RandomMenuRecommender {
     public String chooseMenuByCategory(Category category) {
         List<String> shuffledMenus = randomService.shuffle(category.getMenus());
         return Optional.ofNullable(shuffledMenus.get(0))
-                .orElseThrow(() -> new IllegalStateException("카테고리에 메뉴가 존재하지 않습니다."));
+                .orElseThrow(() -> new IllegalStateException("[ERROR]카테고리에 메뉴가 존재하지 않습니다."));
     }
 }
