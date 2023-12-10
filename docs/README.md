@@ -12,3 +12,9 @@
 
 * `Category` : 카테고리
     * [x] : 카테고리 별로 음식을 저장하고 있다.
+
+* `Recommendation` : 추천
+    * [] :
+
+* `RandomMenuRecommender` : 랜덤 메뉴 추천기
+    * [x] : 랜덤 메뉴를 추천한다.
