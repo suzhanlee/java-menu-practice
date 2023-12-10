@@ -21,17 +21,17 @@ public class MenuController {
     }
 
     public void run() {
-        List<Couch> couches = retryGetCouches();
-        List<IndividualRecommendMenu> individualRecommendMenus = retryGetIndividualRecommendMenus(couches);
+        List<Couch> couches = getCouchesWithRetry();
+        List<IndividualRecommendMenu> individualRecommendMenus = getIndividualRecommendMenusWithRetry(couches);
         outputView.printRecommendationResult(individualRecommendMenus);
     }
 
-    private List<Couch> retryGetCouches() {
+    private List<Couch> getCouchesWithRetry() {
         try {
             return getCouches();
         } catch (IllegalStateException e) {
-            System.out.println(e.getMessage());
-            return retryGetCouches();
+            outputView.printErrorMessage(e.getMessage());
+            return getCouchesWithRetry();
         }
     }
 
@@ -46,12 +46,12 @@ public class MenuController {
         return couches;
     }
 
-    private List<IndividualRecommendMenu> retryGetIndividualRecommendMenus(List<Couch> couches) {
+    private List<IndividualRecommendMenu> getIndividualRecommendMenusWithRetry(List<Couch> couches) {
         try {
             return getIndividualRecommendMenus(couches);
         } catch (IllegalStateException e) {
-            System.out.println(e.getMessage());
-            return retryGetIndividualRecommendMenus(couches);
+            outputView.printErrorMessage(e.getMessage());
+            return getIndividualRecommendMenusWithRetry(couches);
         }
     }
 

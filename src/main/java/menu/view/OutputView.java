@@ -21,4 +21,8 @@ public class OutputView {
 
         System.out.println("추천을 완료했습니다.");
     }
+
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
