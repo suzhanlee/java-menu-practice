@@ -37,6 +37,7 @@ public class MenuController {
     }
 
     private Player getCouches() {
+        outputView.startMenuRecommendationMessage();
         List<String> couchNames = inputView.couchNames();
         List<Couch> couches = new ArrayList<>();
         for (String couchName : couchNames) {

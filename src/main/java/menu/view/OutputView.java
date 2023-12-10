@@ -5,6 +5,9 @@ import menu.dto.IndividualRecommendMenu;
 
 public class OutputView {
 
+    public void startMenuRecommendationMessage() {
+        System.out.println("점심 메뉴 추천을 시작합니다.\n");
+    }
 
     public void printRecommendationResult(List<IndividualRecommendMenu> individualRecommendMenus) {
         System.out.println("메뉴 추천 결과입니다.");

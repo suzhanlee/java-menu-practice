@@ -46,7 +46,7 @@ public class ApplicationTest extends NsTest {
                 };
 
                 assertRandomTest(executable,
-                    Mocking.ofRandomNumberInRange(2, 5, 1, 3, 4),   // 숫자는 카테고리 번호를 나타낸다.
+                    Mocking.ofRandomNumberInRange(2, 4, 0, 2, 3),   // 숫자는 카테고리 번호를 나타낸다.
                     Mocking.ofShuffle(
                         // 월요일
                         List.of("김치찌개", "김밥", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음"),    // 구구
